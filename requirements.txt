@@ -1,0 +1,7 @@
+# Tested with Python 3.12 (works on 3.10+).
+# Pin minimums to the versions this project was developed and verified against.
+pandas>=2.1
+numpy>=1.26
+matplotlib>=3.8
+statsmodels>=0.14
+scipy>=1.11
