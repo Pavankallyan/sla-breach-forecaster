@@ -87,6 +87,8 @@ sla-breach-forecaster/
 │   ├── evaluate.py          # precision / recall / F1 / false-alarm report
 │   └── plot.py              # matplotlib figures
 ├── data/                    # generated CSVs (latency, forecast, alerts)
+├── examples/                # runnable walkthroughs (write to temp dirs)
+│   └── alerting_walkthrough.py  # 14-day, 4-incident end-to-end demo
 └── plots/
     ├── 01_full_series.png       # 60-day series, incidents shaded
     ├── 02_forecast_vs_actual.png # last 72h incl. 24h holdout
@@ -134,6 +136,20 @@ python -m pytest tests/ -q
 
 GitHub Actions (`.github/workflows/ci.yml`) byte-compiles the sources and
 runs the test suite on every push to `main` and every pull request.
+
+## Examples
+
+- `examples/alerting_walkthrough.py` — a fast, self-contained walkthrough of
+  the whole pipeline on a 14-day, 4-incident synthetic scenario (finishes in
+  seconds; writes CSVs to a temp dir and never touches `data/`):
+
+```bash
+python examples/alerting_walkthrough.py
+```
+
+It generates the data, fits Holt-Winters, raises alerts, and evaluates them
+against the injected ground truth — all 4 incidents caught with zero false
+positives.
 
 ## Design decisions
 
