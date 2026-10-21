@@ -121,6 +121,20 @@ python src/plot.py            --data data/latency.csv --forecast data/forecast.c
 Runtime is dominated by the Holt-Winters fit (~2–3 minutes on 17k points);
 everything else takes seconds.
 
+## Tests and CI
+
+The alerting logic (`src/alerts.py`) is covered by unit tests in `tests/`
+(persistence requirement, cooldown suppression, short-blip handling,
+recovery re-arming, threshold behavior):
+
+```bash
+pip install -r requirements.txt   # pytest is included
+python -m pytest tests/ -q
+```
+
+GitHub Actions (`.github/workflows/ci.yml`) byte-compiles the sources and
+runs the test suite on every push to `main` and every pull request.
+
 ## Design decisions
 
 - **Why Holt-Winters, not Prophet:** Prophet pulls in heavy dependencies
