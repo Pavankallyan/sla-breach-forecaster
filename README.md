@@ -127,7 +127,10 @@ everything else takes seconds.
 
 The alerting logic (`src/alerts.py`) is covered by unit tests in `tests/`
 (persistence requirement, cooldown suppression, short-blip handling,
-recovery re-arming, threshold behavior):
+recovery re-arming, threshold behavior). The evaluation logic
+(`src/evaluate.py`) is covered too: ground-truth breach intervals from a
+hand-built series, perfect/partial/false-alarm/no-alert cases, confusion
+counts, event detection and delay, and a custom threshold with no breach.
 
 ```bash
 pip install -r requirements.txt   # pytest is included
