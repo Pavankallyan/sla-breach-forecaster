@@ -130,7 +130,10 @@ The alerting logic (`src/alerts.py`) is covered by unit tests in `tests/`
 recovery re-arming, threshold behavior). The evaluation logic
 (`src/evaluate.py`) is covered too: ground-truth breach intervals from a
 hand-built series, perfect/partial/false-alarm/no-alert cases, confusion
-counts, event detection and delay, and a custom threshold with no breach.
+counts, event detection and delay, and a custom threshold with no breach. The synthetic-data generator
+(`src/generate_latency.py`) is covered too: schema and 5-minute spacing,
+seeded determinism, incident placement away from the edges, quieter
+weekends, and the daily-profile peak and incident-shape ramp.
 
 ```bash
 pip install -r requirements.txt   # pytest is included
